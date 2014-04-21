@@ -74,10 +74,6 @@ class ExampleCommands(bunny1.Bunny1Commands):
         """goes to the developers discussion forum.  still need to add search to this :/"""
         return "http://forum.developers.facebook.com/"
 
-    def jmirc(self, arg):
-        """goes to dreiss' version of jmIrc"""
-        return "http://www.cdc03.com/jmIrc.jar"
-
     def fblucky(self, arg):
         """facebook i'm feeling lucky search, i.e. go directly to a person's profile"""
         return "http://www.facebook.com/s.php?jtf&q=" + q(arg)
@@ -90,10 +86,6 @@ class ExampleCommands(bunny1.Bunny1Commands):
         else:
             return "http://www.youtube.com/"
 
-    def yts(self, arg):
-        """goes to your YouTube subscription center"""
-        return "http://www.youtube.com/subscription_center"
-
     def ytd(self, arg):
         """Searches YouTube by date added instead of by relevance, or goes to youtube.com"""
         if arg:
@@ -101,24 +93,12 @@ class ExampleCommands(bunny1.Bunny1Commands):
         else:
             return "http://www.youtube.com/"
 
-    def bugcongress(self, arg):
-        """looks up your senator or congressperson based on a zip code you give it"""
-        # similar to the ubiquity command found here:
-        # http://people.mozilla.com/~jdicarlo/ubiquity-tutorial-1.mov
+    def wa(self, arg):
+        """Searches Wolfram Alpha or goes there"""
         if arg:
-            return "http://www.congress.org/congressorg/officials/congress/?lvl=C&azip=%s" % arg
+            return "http://www.wolframalpha.com/input/?i=%s" % qp(arg)
         else:
-            return "http://www.congress.org/congressorg/officials/congress/"
-
-    def wikinvest(self, arg):
-        """Searches Wikinvest or goes there"""
-        if arg:
-            return "http://www.wikinvest.com/Special/Search?search=%s" % qp(arg)
-        else:
-            return "http://www.wikinvest.com/"
-    # make wi and wv be aliasses for wikinvest
-    wi = wikinvest
-    wv = wikinvest
+            return "http://www.wolframalpha.com/"
 
     # unlisted makes it so this command won't show up when listing all
     # commands, but the command can still be used
@@ -165,16 +145,6 @@ class ExampleCommands(bunny1.Bunny1Commands):
             # if no arg, go to the main page of bugzilla
             return "http://bugs.developers.facebook.com/"
 
-    def _author(self, arg):
-        """goes to the author of bunny1's homepage"""
-        return "http://www.ccheever.com/"""
-
-    # an example of a redirect that goes to a non-HTTP URL
-    # also, an example of a command that requires an argument
-    def aim(self, arg):
-        """use AOL Instant Messenger to IM a given screenname"""
-        return "aim:goim?screenname=%s" % qp(arg)
-
     # an example of showing content instead of redirecting and also
     # using content from the filesystem
     def readme(self, arg):
@@ -194,7 +164,6 @@ class ExampleCommands(bunny1.Bunny1Commands):
             examples = [
                     "g phpsh",
                     "fbpbz 1737",
-                    "wikinvest 2008 Financial Crisis",
                     "popular",
                     "ya what is the meaning of life?",
                     "list Facebook",
@@ -207,7 +176,6 @@ class ExampleCommands(bunny1.Bunny1Commands):
                     "rickroll",
                     "yt i'm cool sushi654 yeah",
                     "y osteria palo alto",
-                    "live james harrison",
                     ]
 
         return """

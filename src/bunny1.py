@@ -170,7 +170,7 @@ class Bunny1(object):
             try:
                 return self.do_command(arg)
             except HTTPRedirect, redir:
-                url = redir.urls[0]
+                url = escape(redir.urls[0])
                 return "<code><b>bunny1</b> DEBUG: redirect to <a href='%s'>%s</a></code>" % (url, url)
 
         # we don't want people calling things like __str__, etc.
@@ -443,10 +443,6 @@ class Bunny1Commands(object):
     def echo(self, arg):
         """returns back what you give to it"""
         raise Content(escape(arg))
-
-    def html(self, arg):
-        """returns back the literal HTML you give it"""
-        raise Content(arg)
 
     def g(self, arg):
         """does a google search.  we could fallback to yubnub, but why do an unnecessary roundtrip for something as common as a google search?"""
